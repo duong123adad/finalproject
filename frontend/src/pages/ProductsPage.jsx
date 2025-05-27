@@ -577,7 +577,7 @@ const ProductListPage = () => {
   const handleConfirmLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userID");
-    window.location.href = "/login";
+      navigate("/login");
   };
 
   // Sửa lỗi đóng dialog hồ sơ

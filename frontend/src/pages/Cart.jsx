@@ -502,6 +502,7 @@ const CartPage = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userID");
     navigate("/login");
+    
     setOpenLogoutDialog(false);
   };
 
