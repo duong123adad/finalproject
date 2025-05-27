@@ -58,7 +58,7 @@ const ProtectedRoute = ({ allowedRoles, children }) => {
   const { isLoggedIn, userRole } = useAuth();
 
   if (!isLoggedIn) {
-    return <Navigate to="/homePage" />;
+    return <Navigate to="/login" />;
   }
 
   if (allowedRoles && !allowedRoles.includes(userRole)) {
