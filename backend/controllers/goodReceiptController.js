@@ -1,6 +1,6 @@
 // backend/controllers/goodReceiptController.js
 const mongoose = require("mongoose");
-const GoodReceipt = require("../models/GoodReceipt");
+const GoodReceipt = require("../models/Goodreceipt");
 const Batch = require("../models/Batch");
 const Product = require("../models/Product");
 const PurchaseOrder = require("../models/PurchaseOrder");
