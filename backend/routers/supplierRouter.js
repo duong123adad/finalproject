@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const supplierController = require('../controllers/supplierController');
-const { protect, restrictTo } = require('../middlewares/authMiddleware');
+const { protect, restrictTo } = require('../middlewares/authmiddleware');
 
 // Apply authentication to all routes
 router.use(protect);

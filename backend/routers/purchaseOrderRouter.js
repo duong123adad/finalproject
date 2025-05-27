@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const purchaseOrderController = require('../controllers/purchaseOrderController');
-const { protect, restrictTo } = require('../middlewares/authMiddleware');
+const { protect, restrictTo } = require('../middlewares/authmiddleware');
 
 const adminProtect = [protect, restrictTo('admin')];
 

@@ -3,7 +3,7 @@ const { sendEmail } = require('../config/nodemailer');
 const Supplier = require('../models/Supplier');
 const Product = require('../models/Product');
 const mongoose = require('mongoose');
-const GoodReceipt = require('../models/GoodReceipt');
+const GoodReceipt = require('../models/Goodreceipt');
 
 const purchaseOrderController = {
   createPurchaseOrder: async (req, res) => {
