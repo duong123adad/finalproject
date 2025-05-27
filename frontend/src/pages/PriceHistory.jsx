@@ -75,7 +75,7 @@ const PriceHistory = () => {
       });
 
       const response = await axios.get(
-        `http://localhost:8000/api/priceHistory?${queryParams}`,
+        `https://panddretailshop.onrender.com/api/priceHistory?${queryParams}`,
         { headers: authHeader() }
       );
 
@@ -97,7 +97,7 @@ const PriceHistory = () => {
       });
 
       const response = await axios.get(
-        `http://localhost:8000/api/priceHistory/statistics?${queryParams}`,
+        `https://panddretailshop.onrender.com/api/priceHistory/statistics?${queryParams}`,
         { headers: authHeader() }
       );
 

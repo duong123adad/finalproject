@@ -93,13 +93,13 @@ const InOutPage = () => {
 
         // Phiếu nhập kho (chi)
         const grRes = await axios.get(
-          "http://localhost:8000/api/goodreceipt",
+          "https://panddretailshop.onrender.com/api/goodreceipt",
           config
         );
 
         // Hóa đơn bán hàng (thu)
         const orderRes = await axios.get(
-          "http://localhost:8000/api/orders",
+          "https://panddretailshop.onrender.com/api/orders",
           config
         );
 
@@ -172,7 +172,7 @@ const InOutPage = () => {
         ? { headers: { Authorization: `Bearer ${token}` } }
         : {};
       const res = await axios.get(
-        `http://localhost:8000/api/goodreceipt/${id}`,
+        `https://panddretailshop.onrender.com/api/goodreceipt/${id}`,
         config
       );
       const receipt = res.data.data || res.data;
@@ -180,7 +180,7 @@ const InOutPage = () => {
       // Fetch thông tin người nhận
       if (receipt.receivedBy) {
         const userRes = await axios.get(
-          `http://localhost:8000/api/user/${receipt.receivedBy}`,
+          `https://panddretailshop.onrender.com/api/user/${receipt.receivedBy}`,
           config
         );
         setReceivedByUser(userRes.data);
@@ -227,7 +227,7 @@ const InOutPage = () => {
         ? { headers: { Authorization: `Bearer ${token}` } }
         : {};
       const res = await axios.get(
-        `http://localhost:8000/api/orders/${id}`,
+        `https://panddretailshop.onrender.com/api/orders/${id}`,
         config
       );
       setSelectedOrder(res.data.data || res.data); // Adjust based on your API response structure

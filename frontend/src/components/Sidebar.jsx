@@ -121,7 +121,7 @@ const Sidebar = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:8000/api/auth/logout",
+        "https://panddretailshop.onrender.com/api/auth/logout",
         {},
         {
           headers: {

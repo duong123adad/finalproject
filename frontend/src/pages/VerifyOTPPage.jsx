@@ -38,7 +38,7 @@ const VerifyOTPPage = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/auth/verify-customer-signup",
+                "https://panddretailshop.onrender.com/api/auth/verify-customer-signup",
                 { otp },
                 {
                     withCredentials: true, // Important for sending cookies
@@ -67,7 +67,7 @@ const VerifyOTPPage = () => {
                 return;
             }
             const response = await axios.post(
-                "http://localhost:8000/api/auth/initiate-customer-signup", // Gọi lại API gửi OTP
+                "https://panddretailshop.onrender.com/api/auth/initiate-customer-signup", // Gọi lại API gửi OTP
                 { email: storedEmail },
                 {
                     withCredentials: true, // Important for sending cookies

@@ -69,16 +69,16 @@ const ProductPerformance = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      // console.log('Fetching orders from:', 'http://localhost:8000/api/order');
+      // console.log('Fetching orders from:', 'https://panddretailshop.onrender.com/api/order');
       // console.log('Auth token:', authToken ? 'Present' : 'Missing');
       
       // Try multiple possible endpoints
       let response;
       const possibleEndpoints = [
-        'http://localhost:8000/api/order',
-        'http://localhost:8000/api/orders',
-        'http://localhost:8000/order',
-        'http://localhost:8000/orders'
+        'https://panddretailshop.onrender.com/api/order',
+        'https://panddretailshop.onrender.com/api/orders',
+        'https://panddretailshop.onrender.com/api/order',
+        'https://panddretailshop.onrender.com/api/orders'
       ];
       
       for (const endpoint of possibleEndpoints) {

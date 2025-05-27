@@ -88,7 +88,7 @@ function ShelfInventoryPage() {
       return;
     try {
       await axios.post(
-        "http://localhost:8000/api/orders/cancel-batch",
+        "https://panddretailshop.onrender.com/api/orders/cancel-batch",
         {
           batchId: batch._id,
           reason: "Hủy lô hàng từ giao diện quản lý",
@@ -154,7 +154,7 @@ function ShelfInventoryPage() {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:8000/api/returns", {
+      const response = await axios.post("https://panddretailshop.onrender.com/api/returns", {
         batchId: selectedReturnBatch._id,
         supplierId: selectedReturnBatch.supplier?._id,
         quantity: parseInt(returnQuantity),
@@ -166,7 +166,7 @@ function ShelfInventoryPage() {
       if (selectedReturnBatch.supplier?.contact?.email) {
         try {
           await axios.post(
-            `http://localhost:8000/api/returns/${response.data._id}/resend-email`
+            `https://panddretailshop.onrender.com/api/returns/${response.data._id}/resend-email`
           );
           alert("Email đã được gửi thành công đến nhà cung cấp.");
         } catch (emailError) {
@@ -215,7 +215,7 @@ function ShelfInventoryPage() {
     }
     try {
       await axios.put(
-        `http://localhost:8000/api/batches/${selectedTransferBatch._id}/transfer-to-shelf`,
+        `https://panddretailshop.onrender.com/api/batches/${selectedTransferBatch._id}/transfer-to-shelf`,
         { quantity: parseInt(transferQuantity) }
       );
       await fetchData();
@@ -250,7 +250,7 @@ function ShelfInventoryPage() {
     }
     try {
       await axios.put(
-        `http://localhost:8000/api/batches/${selectedWarehouseTransferBatch._id}/transfer-to-warehouse`,
+        `https://panddretailshop.onrender.com/api/batches/${selectedWarehouseTransferBatch._id}/transfer-to-warehouse`,
         { quantity: parseInt(warehouseTransferQuantity) }
       );
       await fetchData();
@@ -265,7 +265,7 @@ function ShelfInventoryPage() {
   const fetchSuppliers = async () => {
     setLoadingSuppliers(true);
     try {
-      const response = await axios.get("http://localhost:8000/api/suppliers", {
+      const response = await axios.get("https://panddretailshop.onrender.com/api/suppliers", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
@@ -282,7 +282,7 @@ function ShelfInventoryPage() {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get("http://localhost:8000/api/batches", {
+      const response = await axios.get("https://panddretailshop.onrender.com/api/batches", {
         params: { search: searchTerm, status: statusFilter },
       });
       setShelfData(response.data);

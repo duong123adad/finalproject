@@ -38,7 +38,7 @@ const Navbar = ({ onLogout }) => {
             setLoading(true);
             setError(null);
             try {
-                const response = await axios.get(`http://localhost:8000/api/user/${userId}`, {
+                const response = await axios.get(`https://panddretailshop.onrender.com/api/user/${userId}`, {
                     headers: {
                         'Authorization': `Bearer ${authToken}`,
                     },

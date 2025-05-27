@@ -39,7 +39,7 @@ const connectDB = async () => {
 connectDB();
 
 app.use(cors({
-    origin: ["http://localhost:3001", "http://localhost:8000"],
+    origin: ["https://panddretailshop.vercel.app", "https://panddretailshop.onrender.com"],
     credentials: true,
 }));
 

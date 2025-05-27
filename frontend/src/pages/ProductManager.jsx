@@ -120,7 +120,7 @@ const ProductManager = () => {
 
     const handleCreateCategory = async () => {
         try {
-            const response = await axios.post("http://localhost:8000/api/categories", newCategory, {
+            const response = await axios.post("https://panddretailshop.onrender.com/api/categories", newCategory, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setCategories([...categories, response.data]);
@@ -144,7 +144,7 @@ const ProductManager = () => {
         const fetchData = async () => {
             try {
                 // Remove pagination parameters
-                let url = `http://localhost:8000/api/products`;
+                let url = `https://panddretailshop.onrender.com/api/products`;
                 if (selectedCategoryFilter) {
                     url += `?category=${selectedCategoryFilter}`;
                 }
@@ -152,10 +152,10 @@ const ProductManager = () => {
                     axios.get(url, {
                         headers: { Authorization: `Bearer ${token}` },
                     }),
-                    axios.get("http://localhost:8000/api/categories", {
+                    axios.get("https://panddretailshop.onrender.com/api/categories", {
                         headers: { Authorization: `Bearer ${token}` },
                     }),
-                    axios.get("http://localhost:8000/api/suppliers", {
+                    axios.get("https://panddretailshop.onrender.com/api/suppliers", {
                         headers: { Authorization: `Bearer ${token}` },
                     }),
                 ]);
@@ -254,13 +254,13 @@ const ProductManager = () => {
                 let response;
                 if (currentProduct) {
                     response = await axios.patch(
-                        `http://localhost:8000/api/products/${currentProduct._id}`,
+                        `https://panddretailshop.onrender.com/api/products/${currentProduct._id}`,
                         formData,
                         config
                     );
                 } else {
                     response = await axios.post(
-                        "http://localhost:8000/api/products",
+                        "https://panddretailshop.onrender.com/api/products",
                         formData,
                         config
                     );
@@ -275,7 +275,7 @@ const ProductManager = () => {
                 });
 
                 handleCloseDialog();
-                const updatedProducts = await axios.get("http://localhost:8000/api/products", {
+                const updatedProducts = await axios.get("https://panddretailshop.onrender.com/api/products", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setProducts(Array.isArray(updatedProducts.data.data) ? updatedProducts.data.data : []);
@@ -403,7 +403,7 @@ const ProductManager = () => {
             if (product.active) {
                 // Soft delete - update to inactive
                 await axios.patch(
-                    `http://localhost:8000/api/products/${id}`,
+                    `https://panddretailshop.onrender.com/api/products/${id}`,
                     { active: false },
                     {
                         headers: { Authorization: `Bearer ${token}` },
@@ -422,7 +422,7 @@ const ProductManager = () => {
             } else {
                 // Hard delete - remove from database
                 await axios.delete(
-                    `http://localhost:8000/api/products/${id}`,
+                    `https://panddretailshop.onrender.com/api/products/${id}`,
                     {
                         headers: { Authorization: `Bearer ${token}` },
                     }

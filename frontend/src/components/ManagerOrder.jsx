@@ -132,7 +132,7 @@ function ManagerOrder() {
       }
 
       const response = await axios.get(
-        `http://localhost:8000/api/orders?${params.toString()}`,
+        `https://panddretailshop.onrender.com/api/orders?${params.toString()}`,
         {
           headers: { Authorization: `Bearer ${authToken}` },
         }
@@ -522,7 +522,7 @@ function OrderDetailDialog({
     setLoadingBatches(true);
     try {
       const batchPromises = batchIds.map((batchId) =>
-        axios.get(`http://localhost:8000/api/batches/${batchId}`, {
+        axios.get(`https://panddretailshop.onrender.com/api/batches/${batchId}`, {
           headers: { Authorization: `Bearer ${authToken}` },
         })
       );
@@ -586,7 +586,7 @@ function OrderDetailDialog({
   const handleCompletePayment = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/orders/${order._id}/complete-payment`,
+        `https://panddretailshop.onrender.com/api/orders/${order._id}/complete-payment`,
         { amountPaid: parseFloat(amountPaid) },
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
@@ -605,7 +605,7 @@ function OrderDetailDialog({
   const handleUpdateOrder = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/api/orders/${order._id}`,
+        `https://panddretailshop.onrender.com/api/orders/${order._id}`,
         editedOrder,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );

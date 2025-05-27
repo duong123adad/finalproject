@@ -76,7 +76,7 @@ const CreateGoodReceipt = () => {
   const fetchOrders = async () => {
     if (!isTokenValid()) return;
     try {
-      const purchaseOrdersRes = await axios.get("http://localhost:8000/api/purchaseOrder", {
+      const purchaseOrdersRes = await axios.get("https://panddretailshop.onrender.com/api/purchaseOrder", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -103,14 +103,14 @@ const CreateGoodReceipt = () => {
     
     try {
       // First get all products
-      const allProductsResponse = await axios.get("http://localhost:8000/api/products", {
+      const allProductsResponse = await axios.get("https://panddretailshop.onrender.com/api/products", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       
       // Get supplier details to get the list of products they supply
-      const supplierResponse = await axios.get(`http://localhost:8000/api/suppliers/${supplierId}`, {
+      const supplierResponse = await axios.get(`https://panddretailshop.onrender.com/api/suppliers/${supplierId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -132,7 +132,7 @@ const CreateGoodReceipt = () => {
         console.log(`Found ${filteredProducts.length} products from supplier ${supplierResponse.data.name}`);
       } else {
         // If no suppliedProducts or unable to filter, use the direct API endpoint as fallback
-        const response = await axios.get(`http://localhost:8000/api/products/supplier/${supplierId}`, {
+        const response = await axios.get(`https://panddretailshop.onrender.com/api/products/supplier/${supplierId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -143,7 +143,7 @@ const CreateGoodReceipt = () => {
       console.error("Error fetching supplier products:", error);
       // Fallback to direct API call if the filtering approach fails
       try {
-        const response = await axios.get(`http://localhost:8000/api/products/supplier/${supplierId}`, {
+        const response = await axios.get(`https://panddretailshop.onrender.com/api/products/supplier/${supplierId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -161,7 +161,7 @@ const CreateGoodReceipt = () => {
     console.log("Đã chọn order ID:", orderId);
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/purchaseorder/${orderId}`,
+        `https://panddretailshop.onrender.com/api/purchaseorder/${orderId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -413,7 +413,7 @@ const CreateGoodReceipt = () => {
       console.log("Dữ liệu gửi đi:", JSON.stringify(requestData, null, 2));
 
       const response = await axios.post(
-        "http://localhost:8000/api/goodreceipt/from-po",
+        "https://panddretailshop.onrender.com/api/goodreceipt/from-po",
         requestData,
         {
           headers: {
@@ -429,7 +429,7 @@ const CreateGoodReceipt = () => {
 
       setConfirming(true);
       const confirmResponse = await axios.patch(
-        `http://localhost:8000/api/goodreceipt/confirm/${response.data._id}`,
+        `https://panddretailshop.onrender.com/api/goodreceipt/confirm/${response.data._id}`,
         {},
         {
           headers: {
@@ -497,7 +497,7 @@ const CreateGoodReceipt = () => {
     try {
       setReceiptDetailsLoading(true);
       const response = await axios.get(
-        `http://localhost:8000/api/goodreceipt/${receiptId}`,
+        `https://panddretailshop.onrender.com/api/goodreceipt/${receiptId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

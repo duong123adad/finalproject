@@ -42,7 +42,7 @@ const ListUsers = () => {
     const fetchEmployees = async () => {
       const token = localStorage.getItem('authToken');
       try {
-        const response = await axios.get('http://localhost:8000/api/user?role=employee', {
+        const response = await axios.get('https://panddretailshop.onrender.com/api/user?role=employee', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -100,7 +100,7 @@ const ListUsers = () => {
   const handleAddEmployee = async () => {
     const token = localStorage.getItem('authToken');
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/create-employee', newEmployee, {
+      const response = await axios.post('https://panddretailshop.onrender.com/api/auth/create-employee', newEmployee, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -110,7 +110,7 @@ const ListUsers = () => {
       // Sau khi thêm thành công, tải lại danh sách nhân viên
       const fetchEmployees = async () => {
         try {
-          const response = await axios.get('http://localhost:8000/api/user?role=employee', {
+          const response = await axios.get('https://panddretailshop.onrender.com/api/user?role=employee', {
             headers: {
               Authorization: `Bearer ${token}`,
             },

@@ -178,7 +178,7 @@ const ProductListPage = () => {
   const fetchProductsWithBatches = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/products/batch/products-with-batches"
+        "https://panddretailshop.onrender.com/api/products/batch/products-with-batches"
       );
       if (response.data.success) {
         // Lọc sản phẩm có ít nhất 1 lô còn hàng
@@ -201,7 +201,7 @@ const ProductListPage = () => {
   const fetchProductsWithBatchesByCategory = async (categoryId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/products/batch/products-with-batches?category=${categoryId}`
+        `https://panddretailshop.onrender.com/api/products/batch/products-with-batches?category=${categoryId}`
       );
       if (response.data.success) {
         // Lọc sản phẩm có ít nhất 1 lô còn hàng
@@ -224,7 +224,7 @@ const ProductListPage = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/categories/tree"
+        "https://panddretailshop.onrender.com/api/categories/tree"
       );
       setCategories(response.data);
     } catch (error) {
@@ -310,7 +310,7 @@ const ProductListPage = () => {
           selectedUnitName: item.selectedUnitName,
         }));
         axios
-          .post("http://localhost:8000/api/cart/add", payload, {
+          .post("https://panddretailshop.onrender.com/api/cart/add", payload, {
             headers: { Authorization: `Bearer ${authToken}` },
           })
           .then(() => {
@@ -329,7 +329,7 @@ const ProductListPage = () => {
       return;
     }
     try {
-      const response = await axios.get("http://localhost:8000/api/cart", {
+      const response = await axios.get("https://panddretailshop.onrender.com/api/cart", {
         headers: { Authorization: `Bearer ${authToken}` },
       });
       if (response.data && response.data.items) {
@@ -377,7 +377,7 @@ const ProductListPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/cart/add",
+        "https://panddretailshop.onrender.com/api/cart/add",
         [
           {
             productId: product._id,
@@ -540,7 +540,7 @@ const ProductListPage = () => {
     if (userId) {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/user/${userId}`,
+          `https://panddretailshop.onrender.com/api/user/${userId}`,
           { headers: { Authorization: `Bearer ${authToken}` } }
         );
         setCustomerInfo(response.data);
@@ -557,7 +557,7 @@ const ProductListPage = () => {
       setLoadingOrders(true);
       try {
         const { data } = await axios.get(
-          `http://localhost:8000/api/orders?customerId=${userId}`,
+          `https://panddretailshop.onrender.com/api/orders?customerId=${userId}`,
           { headers: { Authorization: `Bearer ${authToken}` } }
         );
         setOrders(data);

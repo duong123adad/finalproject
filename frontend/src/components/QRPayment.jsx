@@ -23,7 +23,7 @@ const QRPayment = ({ open, onClose, order, onPaymentSuccess }) => {
   const handleConfirmPaid = async () => {
     try {
       await axios.post(
-        'http://localhost:8000/api/payment/confirm-manual',
+        'https://panddretailshop.onrender.com/api/payment/confirm-manual',
         {
           orderId: order._id,
           transactionId: `MOMO_${Date.now()}`,

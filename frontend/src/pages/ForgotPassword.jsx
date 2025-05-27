@@ -18,7 +18,7 @@ const ForgotPasswordPage = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/auth/request-password-reset",
+                "https://panddretailshop.onrender.com/api/auth/request-password-reset",
                 { email },
                 {
                   withCredentials: true, // Important for sending cookies

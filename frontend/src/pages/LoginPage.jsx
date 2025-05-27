@@ -40,7 +40,7 @@ const LoginPage = () => {
     setError("");
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        "https://panddretailshop.onrender.com/api/auth/login",
         {
           username: username,
           password: password,

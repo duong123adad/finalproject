@@ -219,7 +219,7 @@ const CartPage = () => {
   const fetchCart = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/cart",
+        "https://panddretailshop.onrender.com/api/cart",
         authHeader()
       );
       setCart(data);
@@ -235,7 +235,7 @@ const CartPage = () => {
       setLoadingOrders(true);
       try {
         const { data } = await axios.get(
-          `http://localhost:8000/api/orders?customerId=${userId}`,
+          `https://panddretailshop.onrender.com/api/orders?customerId=${userId}`,
           authHeader()
         );
         setOrders(data);
@@ -252,7 +252,7 @@ const CartPage = () => {
     if (userId) {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/user/${userId}`,
+          `https://panddretailshop.onrender.com/api/user/${userId}`,
           authHeader()
         );
         setCustomerInfo(response.data);
@@ -286,7 +286,7 @@ const CartPage = () => {
       if (localCartArr.length > 0) {
         axios
           .post(
-            "http://localhost:8000/api/cart/add",
+            "https://panddretailshop.onrender.com/api/cart/add",
             localCartArr,
             authHeader()
           )
@@ -334,7 +334,7 @@ const CartPage = () => {
     setUpdating(true);
     try {
       await axios.post(
-        "http://localhost:8000/api/cart/add",
+        "https://panddretailshop.onrender.com/api/cart/add",
         itemsToSend,
         authHeader()
       );
@@ -358,7 +358,7 @@ const CartPage = () => {
       setUpdating(true);
       const updatedItem = cart.items[itemIndex];
       await axios.put(
-        `http://localhost:8000/api/cart/update/${updatedItem.product._id}`,
+        `https://panddretailshop.onrender.com/api/cart/update/${updatedItem.product._id}`,
         {
           quantity: newQuantity,
           selectedUnitName: updatedItem.selectedUnitName,
@@ -390,7 +390,7 @@ const CartPage = () => {
       }
       try {
         await axios.delete(
-          `http://localhost:8000/api/cart/remove/${productId}`,
+          `https://panddretailshop.onrender.com/api/cart/remove/${productId}`,
           {
             headers: authHeader().headers,
             data: { selectedUnitName },
@@ -410,7 +410,7 @@ const CartPage = () => {
         return;
       }
       try {
-        await axios.delete("http://localhost:8000/api/cart", authHeader());
+        await axios.delete("https://panddretailshop.onrender.com/api/cart", authHeader());
         setCart(null);
       } catch (error) {}
     }
@@ -437,7 +437,7 @@ const CartPage = () => {
     setCreatingPreorder(true);
     try {
       await axios.post(
-        "http://localhost:8000/api/orders",
+        "https://panddretailshop.onrender.com/api/orders",
         {
           orderType: "preorder",
           cartId: cart._id,

@@ -178,7 +178,7 @@ const PurchaseOrderManagement = () => {
 
   const fetchSuppliers = async (productId = null) => {
     try {
-      const response = await axios.get("http://localhost:8000/api/suppliers");
+      const response = await axios.get("https://panddretailshop.onrender.com/api/suppliers");
       let filteredSuppliers = response.data;
       
       if (productId) {
@@ -197,10 +197,10 @@ const PurchaseOrderManagement = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/products");
+      const response = await axios.get("https://panddretailshop.onrender.com/api/products");
       const activeProducts = response.data.data.filter(product => product.active !== false);
       if (selectedSupplier) {
-        const supplierData = await axios.get(`http://localhost:8000/api/suppliers/${selectedSupplier}`);
+        const supplierData = await axios.get(`https://panddretailshop.onrender.com/api/suppliers/${selectedSupplier}`);
         const suppliedProductIds = supplierData.data.suppliedProducts.map(item => item.product);
         const filteredProducts = activeProducts.filter(product => suppliedProductIds.includes(product._id));
         setProducts(filteredProducts);
@@ -214,7 +214,7 @@ const PurchaseOrderManagement = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/purchaseOrder");
+      const response = await axios.get("https://panddretailshop.onrender.com/api/purchaseOrder");
       setOrders(response.data);
     } catch (error) {
       console.error(error);
@@ -337,7 +337,7 @@ const PurchaseOrderManagement = () => {
         orderDate: new Date().toISOString(),
         approvalDate: orderStatus === "approved" ? new Date().toISOString() : null,
       };
-      await axios.post("http://localhost:8000/api/purchaseOrder", payload);
+      await axios.post("https://panddretailshop.onrender.com/api/purchaseOrder", payload);
       alert("Tạo phiếu đặt hàng thành công!");
       setSelectedSupplier("");
       setOrderItems([]);
@@ -396,7 +396,7 @@ const PurchaseOrderManagement = () => {
         })),
         approvalDate: isNewlyApproved ? new Date().toISOString() : editOrder.approvalDate,
       };
-      await axios.put(`http://localhost:8000/api/purchaseOrder/${editOrder._id}`, payload);
+      await axios.put(`https://panddretailshop.onrender.com/api/purchaseOrder/${editOrder._id}`, payload);
       alert("Cập nhật phiếu đặt hàng thành công!");
       setOpenDialog(false);
       fetchOrders();
@@ -413,7 +413,7 @@ const PurchaseOrderManagement = () => {
   const confirmDelete = async () => {
     if (!confirmDeleteId) return;
     try {
-      await axios.delete(`http://localhost:8000/api/purchaseOrder/${confirmDeleteId}`);
+      await axios.delete(`https://panddretailshop.onrender.com/api/purchaseOrder/${confirmDeleteId}`);
       alert("Xóa phiếu đặt hàng thành công!");
       fetchOrders();
     } catch (error) {
@@ -426,7 +426,7 @@ const PurchaseOrderManagement = () => {
 
   const handleResendEmail = async (order) => {
     try {
-      await axios.post(`http://localhost:8000/api/purchaseOrder/${order._id}/resend-email`);
+      await axios.post(`https://panddretailshop.onrender.com/api/purchaseOrder/${order._id}/resend-email`);
       alert("Gửi lại email thành công!");
     } catch (error) {
       console.error(error);

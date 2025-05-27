@@ -33,7 +33,7 @@ const AddToInventory = () => {
     try {
       setLoading(true);
       setError(null);
-      const res = await axios.get('http://localhost:8000/api/goodreceipt',
+      const res = await axios.get('https://panddretailshop.onrender.com/api/goodreceipt',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -66,7 +66,7 @@ const AddToInventory = () => {
         headers: { Authorization: `Bearer ${token}` }
       };
       
-      const res = await axios.patch(`http://localhost:8000/api/goodreceipt/confirm/${receiptId}`, {}, config);
+      const res = await axios.patch(`https://panddretailshop.onrender.com/api/goodreceipt/confirm/${receiptId}`, {}, config);
       
       if (res.data.batches && Array.isArray(res.data.batches)) {
         // Map through batches to ensure consistent property names

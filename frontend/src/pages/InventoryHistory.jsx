@@ -78,7 +78,7 @@ const InventoryHistory = () => {
   
   const fetchSuppliers = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/suppliers", {
+      const response = await axios.get("https://panddretailshop.onrender.com/api/suppliers", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         }
@@ -94,7 +94,7 @@ const InventoryHistory = () => {
       setLoading(true);
       setError(null);
       
-      let url = "http://localhost:8000/api/goodreceipt";
+      let url = "https://panddretailshop.onrender.com/api/goodreceipt";
       const params = new URLSearchParams();
       
       if (searchTerm) {

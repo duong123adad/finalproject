@@ -65,7 +65,7 @@ function ReturnHistory() {
       if (dateRange.startDate) params.startDate = dateRange.startDate;
       if (dateRange.endDate) params.endDate = dateRange.endDate;
       
-      const response = await axios.get("http://localhost:8000/api/returns", {
+      const response = await axios.get("https://panddretailshop.onrender.com/api/returns", {
         params,
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ function ReturnHistory() {
       setReturns(response.data);
       
       // Fetch statistics
-      const statsResponse = await axios.get("http://localhost:8000/api/returns/statistics", {
+      const statsResponse = await axios.get("https://panddretailshop.onrender.com/api/returns/statistics", {
         params: {
           startDate: dateRange.startDate,
           endDate: dateRange.endDate
@@ -94,7 +94,7 @@ function ReturnHistory() {
   
   const fetchSuppliers = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/suppliers",
+      const response = await axios.get("https://panddretailshop.onrender.com/api/suppliers",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -124,7 +124,7 @@ function ReturnHistory() {
   
   const handleStatusUpdate = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:8000/api/returns/${id}/status`, { status });
+      await axios.patch(`https://panddretailshop.onrender.com/api/returns/${id}/status`, { status });
       fetchReturns();
       if (selectedReturn && selectedReturn._id === id) {
         setSelectedReturn(prev => ({ ...prev, status }));
@@ -136,7 +136,7 @@ function ReturnHistory() {
   
   const handleResendEmail = async (id) => {
     try {
-      await axios.post(`http://localhost:8000/api/returns/${id}/resend-email`);
+      await axios.post(`https://panddretailshop.onrender.com/api/returns/${id}/resend-email`);
       alert("Email đã được gửi lại thành công.");
     } catch (err) {
       alert(err.response?.data?.message || "Không thể gửi lại email.");
